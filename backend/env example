@@ -1,0 +1,39 @@
+PORT=5655
+FRONTEND_URL=https://dessobuild.com
+
+MONGO_LINK=mongodb+srv://naveenpandit1106:3ZQ2fTRdJ4d4MekW@helpubuild.pn9umv4.mongodb.net/?retryWrites=true&w=majority&appName=helpubuild
+TEST_MONGO_LINK=mongodb+srv://hbsdevelopersteam_db_user:0lYCr607R2ak9EIp@testdb.79yk5hn.mongodb.net/testDb?appName=testDb
+
+# SMTP Details 
+SMTP_HOST=smtpout.secureserver.net
+SMTP_PORT=465
+EMAIL_USERNAME=info@dessobuild.com
+EMAIL_PASSWORD=DessoBuild_123@
+
+
+JWT_SECRET=3334223e0f7bbd4acd84edf79764f6e8db51e13be666bd8430f4c1d9a5dc2e89688e5967e4d32810fb51bc60c393f5cd25d2
+COOKIE_EXPIRES_TIME=2
+JWT_EXPIRES_TIME=2d
+
+# Cloudinary
+CLOUD_NAME=ddz8ndyh5
+CLOUDINARY_API_KEY=786527998815292
+CLOUDINARY_SECRET_KEY=WillIJElmNohM3pZf2YklQqFIMs
+# Map Api
+GOOGLE_MAP_KEY=AIzaSyCBATa-tKn2Ebm1VbQ5BU8VOqda2nzkoTU
+# test key
+RAZORPAY_TEST_KEY_ID=rzp_test_cz0vBQnDwFMthJ
+RAZORPAY_TEST_KEY_SECRET=aIM7S3NfvUHlM84tcZRQpNht
+#live key
+RAZORPAY_KEY_ID=rzp_live_bmq7YMRTuGvvfu
+RAZORPAY_KEY_SECRET=llIdBGulusue6QW1SlAS2xXN
+# Call
+CALL_API_KEY=f697a9a476f554515dbfc5a250e62160b3312fe5698a929e
+CALL_API_TOKEN=a463bad9eec985dc12da85c9856579ac3967fdb799834635
+CALL_ACCOUNT_SID=hovermedia1
+CALL_SUBDOMAIN=api.exotel.com
+
+EXO_PHONE=09513886363
+CLOUDSHOPE_API_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc2MTgsInVzZXJuYW1lIjoiQW5pc2gxOTc5NCIsIm1haW5fdXNlciI6NzYxOCwiaWF0IjoxNzM4NTgyMjU2fQ.noWKtJRXvmQy6vZIZowXiDDx9wn-iRwOJccCH7EsZEM
+Admin_Number=9220441214
+

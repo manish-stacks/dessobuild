@@ -1,0 +1,41 @@
+{
+  "name": "dessobuild-server",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "lint": "eslint.",
+    "lint:fix": "eslint. --fix",
+    "precommit": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@clerk/clerk-sdk-node": "^5.1.6",
+    "@clerk/express": "^1.7.53",
+    "axios": "^1.13.2",
+    "bcrypt": "^6.0.0",
+    "btoa": "^1.2.1",
+    "cloudinary": "^2.8.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "firebase": "^12.6.0",
+    "firebase-admin": "^13.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.0.0",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.11",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "razorpay": "^2.9.6",
+    "request": "^2.88.2",
+    "server": "file:",
+    "socket.io": "^4.8.1",
+    "xml2js": "^0.6.2"
+  }
+}
