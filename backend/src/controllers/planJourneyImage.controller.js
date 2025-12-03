@@ -1,5 +1,5 @@
 const PlanJourneyImage = require('../models/planJourneyImage.model');
-const { uploadToCloudinary } = require('../utils/Cloudnary');
+const { uploadToCloudinary } = require('../config/cloudinary');
 
 exports.createplanJourneyImage = async (req, res) => {
     try {

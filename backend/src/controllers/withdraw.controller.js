@@ -1,6 +1,6 @@
 const Withdraw = require('../models/withdraw.model')
 const Provider = require('../models/providers.model');
-const SendWhatsapp = require('../utils/SendWhatsapp');
+const SendWhatsapp = require('../config/whatsapp');
 
 exports.createWithdrawal = async (req, res) => {
     try {

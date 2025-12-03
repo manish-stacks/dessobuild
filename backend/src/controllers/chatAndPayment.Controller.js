@@ -1,7 +1,7 @@
 const Provider = require('../models/providers.model')
 const User = require('../models/user.Model')
 const ChatAndPayment = require('../models/chatAndPayment.Model')
-const SendWhatsapp = require('../utils/SendWhatsapp')
+const SendWhatsapp = require('../config/whatsapp')
 require('dotenv').config()
 
 // const razorpayInstance = new Razorpay({

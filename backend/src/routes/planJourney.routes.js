@@ -16,4 +16,3 @@ router.delete('/delete-plan-journey-image/:id', deleteJourneyImage);
 router.put('/update-plan-banner-status/:id', updatePlanActiveStatus);
 
 module.exports = router;
-about.routes.js

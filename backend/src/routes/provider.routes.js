@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
-const { protect } = require('../middlewares/multer');
+const auth = require('../middlewares/auth');
+const role = require("../middlewares/role");
 
 const {
   CreateProvider,
@@ -29,7 +30,6 @@ const {
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-
 const router = express.Router();
 
 // Provider registration related routes
@@ -52,12 +52,12 @@ router.put('/update-bank-detail/:providerId', updateBankDetail);
 router.put('/update-provider-password/:providerId', updatePassword);
 router.put('/update-provider-isbanned/:providerId', updateIsBanned);
 
-router.get('/GetMyProfile', protect, GetMyProfile);
+router.get('/GetMyProfile', auth, GetMyProfile);
 router.get('/get-single-provider/:_id', getSingleProvider);
 
 router.post(
   '/addPortfolio',
-  protect,
+  auth,
   (req, res, next) => {
     upload.fields([
       { name: 'PortfolioLink', maxCount: 1 },

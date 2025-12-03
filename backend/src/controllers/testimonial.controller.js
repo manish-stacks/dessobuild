@@ -1,5 +1,5 @@
 const Testimonial = require('../models/testimonial.model');
-const { uploadToCloudinary, deleteImageFromCloudinary } = require('../utils/Cloudnary');
+const { uploadToCloudinary, deleteImageFromCloudinary } = require('../config/cloudinary');
 
 exports.createTestimonial = async (req, res) => {
     try {

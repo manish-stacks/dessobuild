@@ -1,5 +1,5 @@
 const Blog = require('../models/blog.model');
-const { uploadToCloudinary, deleteImageFromCloudinary, uploadImage } = require('../utils/Cloudnary');
+const { uploadToCloudinary, deleteImageFromCloudinary, uploadImage } = require('../config/cloudinary');
 
 exports.createBlog = async (req, res) => {
     try {

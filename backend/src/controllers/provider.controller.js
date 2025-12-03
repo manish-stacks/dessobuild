@@ -1,8 +1,8 @@
 const PortfolioModel = require("../models/Portfolio.model");
 const providersModel = require("../models/providers.model");
-const { deleteImageFromCloudinary } = require("../utils/Cloudnary");
-const sendToken = require("../utils/SendToken");
-const SendWhatsapp = require("../utils/SendWhatsapp");
+const { deleteImageFromCloudinary } = require("../config/cloudinary");
+const { sign } = require("../utils/generateToken");
+const SendWhatsapp = require("../config/whatsapp");
 const GlobelUserRefDis = require("../models/globelUserRefDis.model");
 const generateOtp = require("../utils/GenreateOtp");
 const ChatAndPayment = require("../models/chatAndPayment.Model");
@@ -137,7 +137,15 @@ Please review the account and proceed with the necessary onboarding steps.
         await SendWhatsapp(AdminNum, AdminMessage)
 
         // Send token for authentication
-        sendToken(newProvider, res, 201, "Account Created successfully");
+        // sendToken(newProvider, res, 201, "Account Created successfully");
+
+        const token = sign({ id: newProvider.id, role: newProvider.role, name: newProvider.name });
+
+        res.json({
+            token,
+            user: newProvider,
+            message: "Account Created successfully"
+        });
 
     } catch (error) {
         console.error("Error creating provider:", error);
@@ -1130,11 +1138,11 @@ exports.helpubuildverified = async (req, res) => {
     }
 };
 
-exports.deleteConsultantPermanent = async (req,res) => {
+exports.deleteConsultantPermanent = async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const findProvider = await providersModel.findByIdAndDelete(id)
-        if(!findProvider){
+        if (!findProvider) {
             return res.status(400).json({
                 success: false,
                 message: 'No consultant found'
@@ -1145,7 +1153,7 @@ exports.deleteConsultantPermanent = async (req,res) => {
             message: 'Consultant Deleted'
         })
     } catch (error) {
-        console.log("Internal server error",error)
+        console.log("Internal server error", error)
         res.status(500).json({
             success: false,
             message: 'Internal sever error',

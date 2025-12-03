@@ -1,5 +1,5 @@
 const AboutImage = require('../models/aboutImage.model')
-const { uploadToCloudinary, deleteImageFromCloudinary } = require('../utils/Cloudnary')
+const { uploadToCloudinary, deleteImageFromCloudinary } = require('../config/cloudinary')
 
 exports.createAboutImage = async (req, res) => {
     try {

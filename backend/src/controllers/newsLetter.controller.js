@@ -1,5 +1,6 @@
 const NewsLetter = require("../models/newsLetter.model");
-const sendEmail = require("../utils/SendEmail");
+const sendEmail = require("../config/email");
+
 
 exports.createNewsLetter = async (req, res) => {
     try {

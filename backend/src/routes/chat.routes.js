@@ -16,9 +16,9 @@ const {
   deleteChatByRoom,
   deleteMessageFromRoom,
   getGroupChatById,
-  changeProviderDeactiveStatus,
-  deleteConsultantPermanent
 } = require('../controllers/chatAndPayment.Controller');
+
+const { changeProviderDeactiveStatus, deleteConsultantPermanent } = require('../controllers/provider.controller');
 
 // create Chat router
 router.post('/create-chat', createChatWithNew);

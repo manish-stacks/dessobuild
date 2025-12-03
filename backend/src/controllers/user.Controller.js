@@ -1,23 +1,19 @@
 const User = require("../models/user.Model");
-const sendEmail = require("../config/email");
-const sendToken = require("../utils/generateToken");
-const { sign } = require("../utils/generateToken")
+const { sign } = require("../utils/generateToken");
 const Provider = require("../models/providers.model");
 const { uploadToCloudinary, deleteImageFromCloudinary } = require("../config/cloudinary");
 const Razorpay = require('razorpay');
-const crypto = require('crypto');
-const axios = require('axios')
-require('dotenv').config()
-const { validatePaymentVerification, validateWebhookSignature } = require('razorpay/dist/utils/razorpay-utils');
+const axios = require('axios');
+const { validatePaymentVerification } = require('razorpay/dist/utils/razorpay-utils');
 const { default: mongoose } = require("mongoose");
 const SendWhatsapp = require("../config/whatsapp");
-const bcrypt = require('bcrypt');
 const GlobelUserRefDis = require("../models/globelUserRefDis.model");
 const providersModel = require("../models/providers.model");
 const ChatAndPayment = require("../models/chatAndPayment.Model");
 const RechargeCoupon = require("../models/rechargeCoupon.model");
-// const { SendWhatsapp } = require("../utils/SendWhatsapp");
-// const SendWhatsapp = require("../utils/SendWhatsapp");
+const generateOtp = require("../utils/GenreateOtp");
+require('dotenv').config()
+
 const razorpayInstance = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
@@ -37,12 +33,14 @@ exports.registeruser = async (req, res) => {
         if (!email) errors.push("Please enter an email");
         if (!PhoneNumber) errors.push("Please enter a contact number");
         if (!Password || Password.length < 6) errors.push("Please enter a password with at least 6 characters");
+        if (Password !== cPassword) errors.push("Passwords do not match");
 
         if (errors.length > 0) {
             return res.status(400).json({ success: false, errors });
         }
 
         const checkNumber = await User.findOne({ PhoneNumber });
+
         if (checkNumber) {
             return res.status(400).json({ success: false, message: "Phone number already registered" });
         }
@@ -62,12 +60,12 @@ exports.registeruser = async (req, res) => {
 
                 const message = `Hello ${name},
 
-It looks like you already have an account with us! To access your account and enjoy our services, please verify your account using the OTP below:
+                        It looks like you already have an account with us! To access your account and enjoy our services, please verify your account using the OTP below:
 
-🔹 OTP: ${otp}
-🕒 This OTP is valid for 2 minutes (expires at: ${new Date(expiresAt).toISOString()}).
+                        🔹 OTP: ${otp}
+                        🕒 This OTP is valid for 2 minutes (expires at: ${new Date(expiresAt).toISOString()}).
 
-Verify your account now and start exploring all the benefits we offer! 🚀  
+                        Verify your account now and start exploring all the benefits we offer! 🚀  
                 `;
 
 
@@ -102,19 +100,19 @@ Verify your account now and start exploring all the benefits we offer! 🚀
         await newUser.save();
 
         const message = `Hello ${name},  
-Thank you for registering with us! To complete your registration, please verify your Phone Number using the OTP below:  
+            Thank you for registering with us! To complete your registration, please verify your Phone Number using the OTP below:  
 
-🔹 OTP: ${otp}  
-🕒 This OTP is valid for 2 minutes (expires at: ${new Date(expiresAt).toISOString()})  
+            🔹 OTP: ${otp}  
+            🕒 This OTP is valid for 2 minutes (expires at: ${new Date(expiresAt).toISOString()})  
 
-Once verified, you'll have full access to our services.  
+            Once verified, you'll have full access to our services.  
 
-Best regards,  
-Your Service Team`;
+            Best regards,  
+            Your Service Team`;
 
         await SendWhatsapp(PhoneNumber, message);
 
-        res.status(201).json({ success: true, data: newUser.expiresAt, message: "User registered successfully! Please check your email for verification." });
+        res.status(201).json({ success: true, data: newUser.expiresAt, message: "User registered successfully! Please check your whatsapp for verification." });
     } catch (error) {
         console.error("Registration error:", error);
         res.status(500).json({ success: false, message: "Internal server error" });
@@ -190,7 +188,15 @@ exports.verifyEmail = async (req, res) => {
 
         await account.save();
         console.log("Save account", account);
-        await sendToken(account, res, 200, verificationMessage);
+        // await sendToken(account, res, 200, verificationMessage);
+        const token = sign({ id: account.id, role: account.role, name: account.name });
+
+        res.json({
+            token,
+            user: account,
+            message: verificationMessage
+        });
+
 
     } catch (error) {
         console.error("Error during verification:", error);
@@ -266,8 +272,14 @@ exports.Changepassword = async (req, res) => {
         console.log("[Changepassword] Account saved successfully.");
 
         const verificationMessage = "Password changed successfully.";
-        return await sendToken(account, res, 200, verificationMessage);
+        // return await sendToken(account, res, 200, verificationMessage);
+        const token = sign({ id: account.id, role: account.role, name: account.name });
 
+        res.json({
+            token,
+            user: account,
+            message: verificationMessage
+        });
     } catch (error) {
         console.error("[Changepassword] Error occurred:", error);
         return res.status(500).json({ success: false, message: "Internal server error." });

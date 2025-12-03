@@ -1,5 +1,5 @@
 const DescribeWork = require('../models/describeWork.model');
-const { uploadToCloudinary, deleteImageFromCloudinary } = require('../utils/Cloudnary');
+const { uploadToCloudinary, deleteImageFromCloudinary } = require('../config/cloudinary');
 
 exports.createDescribeWork = async (req, res) => {
     try {

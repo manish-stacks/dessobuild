@@ -1,9 +1,8 @@
-const express = require('express');
+const router = require('express').Router();
 const multer = require('multer');
 const {
   registeruser,
   getAllUsers,
-  getSingleUserById, // agar kahi use karna ho future me
   updateProfile,
   login,
   logout,
@@ -23,22 +22,24 @@ const {
   updateUserProfileImage,
   getAllUser
 } = require('../controllers/user.Controller');
+const auth = require('../middlewares/auth');
+const role = require("../middlewares/role");
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-const router = express.Router();
 
-// User registration related routes
 router.post('/register', registeruser);
-router.put('/user/update-profile/:id', upload.single('ProfileImage'), updateProfile);
-router.put('/update_user_profile_image/:id', upload.single('ProfileImage'), updateUserProfileImage);
-router.post('/login', login);
-router.get('/universal_logout/:id', logout);
 router.post('/verify/:type', verifyEmail);
+router.post('/login', login);
+
+router.put('/user/update-profile/:id', auth, role(["user"]), upload.single('ProfileImage'), updateProfile);
+router.put('/update_user_profile_image/:id', upload.single('ProfileImage'), updateUserProfileImage);
+router.get('/universal_logout/:id', logout);
+
 router.post('/Changepassword', Changepassword);
 router.post('/resend-otp/:type', resendOtp);
-router.post('/forgot-password', forgotPassword);
+router.post('/forgot-password', auth, role(["user","provider"]), forgotPassword);
 router.get('/get-user-by-id/:id', getUserById);
 router.put('/update-user-password/:userId', updateUserPassword);
 router.get('/total-recharge-amount', getTotalRechargeAmount);

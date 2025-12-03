@@ -6,7 +6,9 @@ const Razorpay = require('razorpay');
 require('dotenv').config();
 const axios = require('axios');
 const { validatePaymentVerification } = require("razorpay/dist/utils/razorpay-utils");
-const sendToken = require("../utils/SendToken");
+// const sendToken = require("../utils/SendToken");
+const { sign } = require("../utils/generateToken");
+
 
 const razorpayInstance = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
@@ -251,7 +253,15 @@ exports.buyMemberShip = async (req, res) => {
             provider.isMember = true;
             provider.PaymentStatus = 'success';
             await provider.save();
-            return await sendToken(provider, res, 201, 'Membership successfully applied');
+            // return await sendToken(provider, res, 201, 'Membership successfully applied');
+            const token = sign({ id: provider.id, role: provider.role, name: provider.name });
+
+            res.json({
+                token,
+                user: provider,
+                message: verificationMessage
+            });
+
             // return res.status(200).json({
             //     success: true,
             //     message: "Membership successfully applied",
@@ -361,7 +371,14 @@ exports.membershipPaymentVerify = async (req, res) => {
         // return res.redirect(
         //     `https://dessobuild.com/successfull-recharge?amount=${amount}&transactionId=${razorpay_payment_id}&date=${currentTime}`
         // );
-        await sendToken(findProvider, res, 201, 'Payment done');
+        // await sendToken(findProvider, res, 201, 'Payment done');
+        const token = sign({ id: findProvider.id, role: findProvider.role, name: findProvider.name });
+
+        res.json({
+            token,
+            user: findProvider,
+            message: verificationMessage
+        });
 
     } catch (error) {
         console.log("Internal server error", error)
