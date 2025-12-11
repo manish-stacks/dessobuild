@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 export const BlogSection = () => {
-    const colors = ["bg-blue-50", "bg-purple-50", "bg-yellow-50"];
+    const colors = ["bg-[#D6E1F5]", "bg-[#E9F5D6]", "bg-[#F5F4D6]"];
     const randomColor = () => {
         return colors[Math.floor(Math.random() * colors.length)];
     };
@@ -31,7 +31,7 @@ export const BlogSection = () => {
                                 </div>
                                 <div className="p-6">
                                     <div className='flex justify-between'>
-                                        <span className={`inline-block ${colors[index]} text-green-800 text-xs px-3 py-1 rounded-full mb-3`}>
+                                        <span className={`inline-block ${colors[index]} text-slate-800 text-xs px-3 py-1 rounded-full mb-3`}>
                                             ARCHITECTURE
                                         </span>
                                         <span className='text-gray-700'>

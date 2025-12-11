@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Menu, X, CheckCircle, Mail, MapPin } from 'lucide-react';
+import { Header } from '@/components/Header/Header';
 
 export default function ContactUsPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,74 +37,7 @@ export default function ContactUsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-900">DessoBuild</h1>
-            </div>
-            
-            <div className="hidden lg:flex items-center space-x-8">
-              <a href="#architects" className="text-gray-600 hover:text-gray-900 text-base transition-colors">
-                Architects
-              </a>
-              <a href="#designers" className="text-gray-600 hover:text-gray-900 text-base transition-colors">
-                Interior Designers
-              </a>
-              <a href="#vastu" className="text-gray-600 hover:text-gray-900 text-base transition-colors">
-                Vastu Experts
-              </a>
-              <a href="#contact" className="text-blue-600 hover:text-blue-700 text-base font-medium transition-colors">
-                Contact us
-              </a>
-            </div>
-
-            <div className="hidden lg:flex items-center space-x-4">
-              <a href="/login" className="text-blue-600 border-2 border-blue-600 px-6 py-2 rounded-lg hover:bg-blue-50 transition-all font-medium">
-                Login
-              </a>
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all font-medium">
-                Get Started
-              </button>
-            </div>
-
-            <button
-              className="lg:hidden p-2 hover:bg-gray-50 rounded-lg transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
-          </div>
-        </div>
-
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100">
-            <div className="px-6 py-4 space-y-1">
-              <a href="#architects" className="block px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                Architects
-              </a>
-              <a href="#designers" className="block px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                Interior Designers
-              </a>
-              <a href="#vastu" className="block px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
-                Vastu Experts
-              </a>
-              <a href="#contact" className="block px-4 py-3 text-blue-600 bg-blue-50 rounded-lg font-medium">
-                Contact us
-              </a>
-              <div className="pt-4 space-y-2">
-                <button className="w-full text-blue-600 border-2 border-blue-600 px-6 py-2 rounded-lg font-medium">
-                  Login
-                </button>
-                <button className="w-full bg-blue-600 text-white px-6 py-2 rounded-lg font-medium">
-                  Get Started
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
-
+      <Header activePage='contact' />
       {/* Hero Section */}
       <section className="bg-white py-12 lg:py-16">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
@@ -124,7 +58,7 @@ export default function ContactUsPage() {
             <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
                     First name
                   </label>
                   <input
@@ -132,11 +66,11 @@ export default function ContactUsPage() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
                     Last name
                   </label>
                   <input
@@ -144,13 +78,13 @@ export default function ContactUsPage() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-2">
                   Phone Number
                 </label>
                 <input
@@ -158,12 +92,12 @@ export default function ContactUsPage() {
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-2">
                   How can we help you?
                 </label>
                 <textarea
@@ -171,7 +105,7 @@ export default function ContactUsPage() {
                   value={formData.message}
                   onChange={handleChange}
                   rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                  className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
                 ></textarea>
               </div>
 
@@ -181,11 +115,11 @@ export default function ContactUsPage() {
                   name="agreeTerms"
                   checked={formData.agreeTerms}
                   onChange={handleChange}
-                  className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                  className="mt-1 w-4 h-4 text-blue-600 border-gray-700 rounded focus:ring-blue-500"
                 />
-                <label className="ml-2 text-sm text-gray-700">
+                <label className="ml-2 text-md text-gray-700">
                   I agree with{' '}
-                  <a href="#" className="text-blue-600 hover:underline">
+                  <a href="#" className="text-gray-700 underline hover:underline-offset-2">
                     Terms and Conditions
                   </a>
                 </label>
@@ -245,7 +179,7 @@ export default function ContactUsPage() {
                   <span className="text-gray-700">info@dessobuild.com</span>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 mt-3">
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-5 h-5 text-gray-600 mt-1 flex-shrink-0" />
                     <div>

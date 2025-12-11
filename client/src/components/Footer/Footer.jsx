@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export const Footer = () => {
@@ -7,7 +8,7 @@ export const Footer = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                         <div>
-                            <h4 className="font-bold mb-4">Explore</h4>
+                            <h4 className="font-bold mb-4">Location</h4>
                             <ul className="space-y-2 text-gray-400">
                                 <li><a href="#" className="hover:text-white">E-520A, 3rd Floor,<br/>Sector 7,Dwarka,<br/>New Delhi- 110075, India</a></li>
                                 <li><a href="#" className="hover:text-white">support.dessobuild@gmail.com</a></li>
@@ -16,11 +17,11 @@ export const Footer = () => {
                         <div>
                             <h4 className="font-bold mb-4">Navigation</h4>
                             <ul className="space-y-2 text-gray-400">
-                                <li><a href="#" className="hover:text-white">Home</a></li>
-                                <li><a href="#" className="hover:text-white">About</a></li>
-                                <li><a href="#" className="hover:text-white">Services</a></li>
-                                <li><a href="#" className="hover:text-white">Become a Frelancer</a></li>
-                                <li><a href="#" className="hover:text-white">Support</a></li>
+                                <li><Link href="/" className="hover:text-white">Home</Link></li>
+                                <li><Link href="#" className="hover:text-white">About</Link></li>
+                                <li><Link href="#" className="hover:text-white">Services</Link></li>
+                                <li><Link href="#" className="hover:text-white">Become a Frelancer</Link></li>
+                                <li><Link href="#" className="hover:text-white">Support</Link></li>
                             </ul>
                         </div>
                         <div>
@@ -35,9 +36,9 @@ export const Footer = () => {
                         <div>
                             <h4 className="font-bold mb-4">Legal</h4>
                             <ul className="space-y-2 text-gray-400">
-                                <li><a href="#" className="hover:text-white">Terms & Condition</a></li>
-                                <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-                                <li><a href="#" className="hover:text-white">Legal Notice</a></li>
+                                <li><Link href="#" className="hover:text-white">Terms & Condition</Link></li>
+                                <li><Link href="#" className="hover:text-white">Privacy Policy</Link></li>
+                                <li><Link href="#" className="hover:text-white">Legal Notice</Link></li>
                             </ul>
                         </div>
                     </div>

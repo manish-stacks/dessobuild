@@ -1,8 +1,9 @@
 "use client";
+import { HeaderTwo } from '@/components/Header/HeaderTwo';
 import React, { useState } from 'react';
 
 export default function LoginPage() {
-  const [userRole, setUserRole] = useState('client');
+  const [userRole, setUserRole] = useState('Client');
   const [formData, setFormData] = useState({
     emailOrPhone: '',
     password: '',
@@ -33,20 +34,9 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-white">
+
       {/* Header */}
-      <header className="border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900">DessoBuild</h1>
-          <div className="flex items-center space-x-6">
-            <a href="/paymentpage" className="text-gray-700 hover:text-gray-900 text-base">
-              Join as Consultant
-            </a>
-            <a href="/signup" className="text-gray-700 hover:text-gray-900 text-base">
-              Sign up
-            </a>
-          </div>
-        </div>
-      </header>
+      <HeaderTwo activeForm={userRole} loginBtn={false} />
 
       {/* Main Content */}
       <main className="max-w-xl mx-auto px-6 py-12">
@@ -58,22 +48,20 @@ export default function LoginPage() {
           {/* Role Toggle */}
           <div className="flex bg-gray-100 rounded-full p-1 mb-12">
             <button
-              onClick={() => setUserRole('client')}
-              className={`flex-1 py-3 px-6 rounded-full text-base font-medium transition-all ${
-                userRole === 'client'
+              onClick={() => setUserRole('Client')}
+              className={`flex-1 py-3 px-6 rounded-full text-base font-medium transition-all ${userRole === 'Client'
                   ? 'bg-white text-blue-600 shadow-sm'
                   : 'text-gray-600'
-              }`}
+                }`}
             >
               Join as client
             </button>
             <button
-              onClick={() => setUserRole('consultant')}
-              className={`flex-1 py-3 px-6 rounded-full text-base font-medium transition-all ${
-                userRole === 'consultant'
+              onClick={() => setUserRole('Consultant')}
+              className={`flex-1 py-3 px-6 rounded-full text-base font-medium transition-all ${userRole === 'Consultant'
                   ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-600'
-              }`}
+                }`}
             >
               Join as consultant
             </button>
@@ -84,7 +72,7 @@ export default function LoginPage() {
         <div className="space-y-6">
           {/* Email/Phone */}
           <div>
-            <label className="block text-sm font-medium text-gray-900 mb-2">
+            <label className="block text-md font-medium text-gray-900 mb-2">
               Email address / Phone Number
             </label>
             <input
@@ -92,13 +80,13 @@ export default function LoginPage() {
               name="emailOrPhone"
               value={formData.emailOrPhone}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full text-gray-600 px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-900 mb-2">
+            <label className="block text-md font-medium text-gray-900 mb-2">
               Password
             </label>
             <input
@@ -106,7 +94,7 @@ export default function LoginPage() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full text-gray-600 px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
             />
             <div className="mt-2">
               <a href="#" className="text-sm text-blue-600 hover:underline">
@@ -168,7 +156,7 @@ export default function LoginPage() {
 
           {/* Sign up Link */}
           <div className="text-center pt-2">
-            <p className="text-sm text-gray-700">
+            <p className="text-md text-gray-700">
               Don&apos;t have an DessoBuilt account?{' '}
               <a href="/signup" className="text-blue-600 hover:underline font-medium">
                 Signup

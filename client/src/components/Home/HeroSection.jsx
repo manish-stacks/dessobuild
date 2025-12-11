@@ -36,7 +36,7 @@ export const HeroSection = () => {
                         <div className="h-52 bg-gray-200">
                             <Image width={400} height={300} src="https://res.cloudinary.com/dzpezyxt2/image/upload/v1764760785/768e99885c6721258f7b36033fa8a21d97d1aaac_iujgor.png" alt="Architects" className="w-full h-full object-cover" />
                         </div>
-                        <div className="p-8 bg-blue-50">
+                        <div className="p-8 bg-[#D6E1F5]">
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Architects</h3>
                             <p className="text-gray-600">
                                 Professional architects to design your dream spaces with precision and creativity.
@@ -48,7 +48,7 @@ export const HeroSection = () => {
                         <div className="h-52 bg-gray-200">
                             <Image width={400} height={300} src="https://res.cloudinary.com/dzpezyxt2/image/upload/v1764760779/7a98e88acb3c1beb7672c58d5899411c7633e975_lb59la.png" alt="Interior Designers" className="w-full h-full object-cover" />
                         </div>
-                        <div className="p-8 bg-purple-50">
+                        <div className="p-8 bg-[#E9F5D6]">
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Interior Designers</h3>
                             <p className="text-gray-600">
                                 Expert interior designers to create beautiful and functional living spaces.
@@ -60,7 +60,7 @@ export const HeroSection = () => {
                         <div className="h-52 bg-gray-200">
                             <Image width={400} height={300} src="https://res.cloudinary.com/dzpezyxt2/image/upload/v1764760778/f3eee56296ba8f0016d411457be4c5bf90a8384c_bqkdbs.png" alt="Vastu Experts" className="w-full h-full object-cover" />
                         </div>
-                        <div className="p-8 bg-yellow-50">
+                        <div className="p-8 bg-[#F5F4D6]">
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Vastu Experts</h3>
                             <p className="text-gray-600">
                                 Certified Vastu consultants to ensure positive energy and harmony in your space.
