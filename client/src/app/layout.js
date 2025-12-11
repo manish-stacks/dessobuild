@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link
-          href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=switzer@100,200,300,400,500,600,700,800&display=swap"
           rel="stylesheet"
         />
       </head>
